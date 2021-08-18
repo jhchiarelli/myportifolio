@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Portifólio</string>
+    <string name="title_toolbar">Repositories</string>
 </resources>

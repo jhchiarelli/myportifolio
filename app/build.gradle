@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -29,14 +30,44 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+
+    def room_version = "2.3.0"
+    def lifecycle_version = "2.3.1"
+    def activity_version = "1.3.1"
+    def coroutines_version = "1.4.1"
+    def retrofit_version = "2.9.0"
+    def okhttp3_version = "4.9.0"
+    def insert_koin_version = "3.0.1"
 
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+
+    //insert-koin
+    implementation "io.insert-koin:koin-android:$insert_koin_version"
+    implementation "io.insert-koin:koin-android-ext:$insert_koin_version"
+
+    //https://developer.android.com/kotlin/coroutines#kts
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
+
+    //Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
